@@ -4,6 +4,51 @@
 const int movimentosBispo = 5;
 const int movimentosTorre = 5;
 const int movimentosRainha = 8;
+int passos = 0;
+
+
+
+void moverPecaRecursiva(int casas, int direcao) {
+
+    if (casas == 0) {
+        passos = 0 ;
+        printf("\n");
+
+     return;  // Condição base para parar a recursão
+    }
+    passos ++;
+
+    switch (direcao) {
+        case 1:
+        printf("Frente - Passo %d\n", passos);
+        moverPecaRecursiva(casas - 1, direcao);
+        break;
+        case 2:
+        printf("Tras - Passo %d\n", passos);
+        moverPecaRecursiva(casas - 1, direcao);
+        break;
+        case 3:
+        printf("Direita - Passo %d\n", passos);
+        moverPecaRecursiva(casas - 1, direcao);
+        break;
+        case 4:
+        printf("Esquerda - Passo %d\n", passos);
+        moverPecaRecursiva(casas - 1, direcao);
+        break;
+        case 5:
+        printf("Diagonal a Esquerda - Passo %d\n", passos);
+        moverPecaRecursiva(casas - 1, direcao);
+        break;
+        case 6:
+        printf("Diagonal a Direita - Passo %d\n", passos);
+        moverPecaRecursiva(casas - 1, direcao);
+        break;
+        default:
+        break;
+    }
+
+    // Chama a recursão para o próximo movimento
+}
 
 // Função para imprimir os movimentos
 void moverPeca(const char* direcao, int movimentos) {
@@ -38,6 +83,10 @@ void moverCavaloEmL(const char* direcao1, const char* direcao2, int movimentos) 
 }
 
 int main() {
+    printf("Movimento do Recursivo:\n");
+    moverPecaRecursiva(8, 4);
+
+
     // Movimento do Bispo (diagonal superior direita)
     printf("Movimento do Bispo:\n");
     moverPeca("Diagonal Superior Direita", movimentosBispo);
